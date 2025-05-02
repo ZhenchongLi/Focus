@@ -1,0 +1,21 @@
+# Xcode
+.DS_Store
+*/xcuserdata
+*.xcuserstate
+*.xcuserdatad
+*.xcbkptlist
+*.xcscheme
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Swift Package Manager
+.swiftpm
+.build/
+Packages/
+
+# System Files
+.DS_Store
