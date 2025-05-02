@@ -230,7 +230,7 @@ struct ContentView: View {
         }
     }
 
-    // 安排工作期间的随机通知
+    // 安排工作期间的随机提醒
     func scheduleRandomNotification() {
         randomTimer?.invalidate()
 
@@ -241,13 +241,10 @@ struct ContentView: View {
             randomTimer = Timer.scheduledTimer(withTimeInterval: randomInterval, repeats: false) { _ in
                 guard self.isRunning && self.isWorking else { return }
 
-                // 播放提醒序列
+                // 只播放提醒声音，不发送通知
                 self.play10SecondAlert()
 
-                // 显示通知
-                self.sendNotification(title: "专注提醒", body: "保持专注！")
-
-                // 安排下一个随机通知
+                // 安排下一个随机提醒
                 self.scheduleRandomNotification()
             }
         }
