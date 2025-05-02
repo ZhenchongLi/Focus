@@ -239,16 +239,16 @@ struct ContentView: View {
             let randomInterval = TimeInterval.random(in: 180...300)
 
             randomTimer = Timer.scheduledTimer(withTimeInterval: randomInterval, repeats: false) { _ in
-                if self.isRunning && self.isWorking {
-                    // 播放提醒序列
-                    self.play10SecondAlert()
+                guard self.isRunning && self.isWorking else { return }
 
-                    // 显示通知
-                    self.sendNotification(title: "专注提醒", body: "保持专注！")
+                // 播放提醒序列
+                self.play10SecondAlert()
 
-                    // 安排下一个随机通知
-                    self.scheduleRandomNotification()
-                }
+                // 显示通知
+                self.sendNotification(title: "专注提醒", body: "保持专注！")
+
+                // 安排下一个随机通知
+                self.scheduleRandomNotification()
             }
         }
     }
