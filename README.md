@@ -17,12 +17,10 @@ A minimalist productivity timer that uses behavioral psychology principles to he
    - After 90 minutes, automatically start a 20-minute break
 3. Click **Reset** at any time to stop the current session
 
-## Behavioral Science Principles
-
 
 ## Project Benefits
 
-### Scientific Foundations
+### Behavioral Science Principles
 
 This app implements three key psychological concepts:
 
