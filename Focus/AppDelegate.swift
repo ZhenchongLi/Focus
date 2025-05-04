@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
 
             // Use weak reference to avoid retain cycle
             weak var weakWindow = sender
-            alert.beginSheetModal(for: sender) { [weak self] response in
+            alert.beginSheetModal(for: sender) { response in
                 if response == .alertFirstButtonReturn {
                     NSApp.terminate(nil)
                 } else if let window = weakWindow {
