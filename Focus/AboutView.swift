@@ -20,6 +20,12 @@ struct AboutView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Author: lizc")
                 Text("Email: li.joe@outlook.com")
+                Button(action: {
+                    NSWorkspace.shared.open(URL(string: "https://fists.cc")!)
+                }) {
+                    Text("fists.cc")
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             .font(.body)
 
@@ -32,6 +38,6 @@ struct AboutView: View {
             Spacer()
         }
         .padding()
-        .frame(width: 300, height: 300)
+        .frame(width: 400, height: 400)
     }
 }
