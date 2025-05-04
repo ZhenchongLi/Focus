@@ -17,23 +17,14 @@ A minimalist productivity timer that uses behavioral psychology principles to he
    - After 90 minutes, automatically start a 20-minute break
 3. Click **Reset** at any time to stop the current session
 
-## Behavioral Science Principles
-
-This app implements two key psychological concepts:
-
-1. **Variable Ratio Reinforcement (变比率强化)**:
-   - Random timing creates stronger engagement than fixed intervals
-   - Similar to how slot machines use random rewards
-
-2. **Basic Rest-Activity Cycle (BRAC)**:
-   - 90-minute work / 20-minute rest cycles
-   - Matches natural human ultradian rhythms for optimal productivity
 
 ## Project Benefits
 
-### Scientific Foundations
+### Behavioral Science Principles
 
-- **Variable Ratio Reinforcement (变比率强化)**:
+This app implements three key psychological concepts:
+
+- **Variable Ratio Reinforcement (VBR)**:
   - Random timing (3-5 minutes) creates stronger engagement than fixed intervals
   - Mimics effective behavioral conditioning techniques
 
