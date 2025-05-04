@@ -5,7 +5,7 @@ import UserNotifications
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, ObservableObject {
     private var statusItem: NSStatusItem?
 
-    // Handle window closing confirmation
+    // Handle window closing confirmation (non-blocking)
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         let alert = NSAlert()
         alert.messageText = "确定要退出专注计时器吗？"
@@ -13,11 +13,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
         alert.addButton(withTitle: "退出")
         alert.addButton(withTitle: "取消")
 
-        let response = alert.runModal()
-        if response == .alertFirstButtonReturn {
-            NSApp.terminate(nil)
+        alert.beginSheetModal(for: sender) { response in
+            if response == .alertFirstButtonReturn {
+                NSApp.terminate(nil)
+            }
         }
-        return false // Always prevent automatic window closing
+        return false // Prevent automatic window closing
     }
 
     // Ensure app quits when terminated
