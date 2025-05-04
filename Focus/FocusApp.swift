@@ -18,8 +18,17 @@ struct FocusApp: App {
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         .commands {
-            // Hide standard menu items
             CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .appInfo) {
+                Button("About Focus") {
+                    appDelegate.showAboutWindow()
+                }
+            }
+            CommandGroup(replacing: .help) {
+                Button("Help") {
+                    appDelegate.openHelpWebsite()
+                }
+            }
         }
     }
 }
