@@ -2,6 +2,8 @@ import SwiftUI
 
 @main
 struct FocusApp: App {
+    static let version = "1.0.2"
+
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
@@ -19,16 +21,6 @@ struct FocusApp: App {
         .windowStyle(HiddenTitleBarWindowStyle())
         .commands {
             CommandGroup(replacing: .newItem) {}
-            CommandGroup(replacing: .appInfo) {
-                Button("About Focus") {
-                    appDelegate.showAboutWindow()
-                }
-            }
-            CommandGroup(replacing: .help) {
-                Button("Help") {
-                    appDelegate.openHelpWebsite()
-                }
-            }
         }
     }
 }
