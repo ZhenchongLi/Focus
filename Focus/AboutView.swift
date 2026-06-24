@@ -11,7 +11,7 @@ struct AboutView: View {
                 .font(.title)
                 .bold()
 
-            Text("Version 1.0.1")
+            Text("Version \(AppVersion.shortVersion())")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -30,7 +30,7 @@ struct AboutView: View {
             .font(.body)
 
             Button(action: {
-                NSWorkspace.shared.open(URL(string: "https://fists.cc/posts/products/focus/")!)
+                NSWorkspace.shared.open(URL(string: HelpURL.help)!)
             }) {
                 Text("Help & Documentation")
             }

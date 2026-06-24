@@ -54,24 +54,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
             button.action = #selector(focusMainWindow)
             button.target = self
         }
-
-        // Setup application menu
-        let appMenu = NSMenu()
-
-        let aboutItem = NSMenuItem(title: "About Focus", action: #selector(showAboutWindow), keyEquivalent: "")
-        aboutItem.target = self
-        appMenu.addItem(aboutItem)
-
-        let helpItem = NSMenuItem(title: "Help", action: #selector(openHelpWebsite), keyEquivalent: "")
-        helpItem.target = self
-        appMenu.addItem(helpItem)
-
-        appMenu.addItem(NSMenuItem.separator())
-
-        let quitItem = NSMenuItem(title: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q")
-        appMenu.addItem(quitItem)
-
-        statusItem?.menu = appMenu
     }
 
     private weak var aboutWindow: NSWindow?
@@ -105,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
     }
 
     @objc func openHelpWebsite() {
-        NSWorkspace.shared.open(URL(string: "https://fists.cc/posts/products/focus/")!)
+        NSWorkspace.shared.open(URL(string: HelpURL.help)!)
     }
 
     @objc func focusMainWindow() {

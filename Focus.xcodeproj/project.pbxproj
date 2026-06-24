@@ -14,35 +14,26 @@
 			remoteGlobalIDString = 6F59C2842DC4A67A00482B13;
 			remoteInfo = Focus;
 		};
-		6F59C29E2DC4A67B00482B13 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6F59C27D2DC4A67A00482B13 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6F59C2842DC4A67A00482B13;
-			remoteInfo = Focus;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6F59C2852DC4A67A00482B13 /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F59C2932DC4A67B00482B13 /* FocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F59C29D2DC4A67B00482B13 /* FocusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6F59C2872DC4A67A00482B13 /* Focus */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = Focus;
 			sourceTree = "<group>";
 		};
 		6F59C2962DC4A67B00482B13 /* FocusTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = FocusTests;
-			sourceTree = "<group>";
-		};
-		6F59C2A02DC4A67B00482B13 /* FocusUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FocusUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -62,13 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F59C29A2DC4A67B00482B13 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +61,6 @@
 			children = (
 				6F59C2872DC4A67A00482B13 /* Focus */,
 				6F59C2962DC4A67B00482B13 /* FocusTests */,
-				6F59C2A02DC4A67B00482B13 /* FocusUITests */,
 				6F59C2862DC4A67A00482B13 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +70,6 @@
 			children = (
 				6F59C2852DC4A67A00482B13 /* Focus.app */,
 				6F59C2932DC4A67B00482B13 /* FocusTests.xctest */,
-				6F59C29D2DC4A67B00482B13 /* FocusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,8 +93,6 @@
 				6F59C2872DC4A67A00482B13 /* Focus */,
 			);
 			name = Focus;
-			packageProductDependencies = (
-			);
 			productName = Focus;
 			productReference = 6F59C2852DC4A67A00482B13 /* Focus.app */;
 			productType = "com.apple.product-type.application";
@@ -134,34 +114,9 @@
 				6F59C2962DC4A67B00482B13 /* FocusTests */,
 			);
 			name = FocusTests;
-			packageProductDependencies = (
-			);
 			productName = FocusTests;
 			productReference = 6F59C2932DC4A67B00482B13 /* FocusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6F59C29C2DC4A67B00482B13 /* FocusUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6F59C2AD2DC4A67B00482B13 /* Build configuration list for PBXNativeTarget "FocusUITests" */;
-			buildPhases = (
-				6F59C2992DC4A67B00482B13 /* Sources */,
-				6F59C29A2DC4A67B00482B13 /* Frameworks */,
-				6F59C29B2DC4A67B00482B13 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6F59C29F2DC4A67B00482B13 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				6F59C2A02DC4A67B00482B13 /* FocusUITests */,
-			);
-			name = FocusUITests;
-			packageProductDependencies = (
-			);
-			productName = FocusUITests;
-			productReference = 6F59C29D2DC4A67B00482B13 /* FocusUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -177,10 +132,6 @@
 						CreatedOnToolsVersion = 16.4;
 					};
 					6F59C2922DC4A67B00482B13 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 6F59C2842DC4A67A00482B13;
-					};
-					6F59C29C2DC4A67B00482B13 = {
 						CreatedOnToolsVersion = 16.4;
 						TestTargetID = 6F59C2842DC4A67A00482B13;
 					};
@@ -202,7 +153,6 @@
 			targets = (
 				6F59C2842DC4A67A00482B13 /* Focus */,
 				6F59C2922DC4A67B00482B13 /* FocusTests */,
-				6F59C29C2DC4A67B00482B13 /* FocusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6F59C2912DC4A67B00482B13 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6F59C29B2DC4A67B00482B13 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F59C2992DC4A67B00482B13 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = 6F59C2842DC4A67A00482B13 /* Focus */;
 			targetProxy = 6F59C2942DC4A67B00482B13 /* PBXContainerItemProxy */;
-		};
-		6F59C29F2DC4A67B00482B13 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6F59C2842DC4A67A00482B13 /* Focus */;
-			targetProxy = 6F59C29E2DC4A67B00482B13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -409,7 +340,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.fists.Focus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -440,7 +372,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.fists.Focus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -483,36 +416,6 @@
 			};
 			name = Release;
 		};
-		6F59C2AE2DC4A67B00482B13 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.fists.FocusUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Focus;
-			};
-			name = Debug;
-		};
-		6F59C2AF2DC4A67B00482B13 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.fists.FocusUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Focus;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -539,15 +442,6 @@
 			buildConfigurations = (
 				6F59C2AB2DC4A67B00482B13 /* Debug */,
 				6F59C2AC2DC4A67B00482B13 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6F59C2AD2DC4A67B00482B13 /* Build configuration list for PBXNativeTarget "FocusUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6F59C2AE2DC4A67B00482B13 /* Debug */,
-				6F59C2AF2DC4A67B00482B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
