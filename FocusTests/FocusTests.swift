@@ -112,7 +112,7 @@ struct FocusTests {
         #expect(model.elapsedTime == 0)
         #expect(sound.played == [.breakToWork])
         #expect(notifications.sent.count == 1)
-        #expect(notifications.sent.first?.title == "WRONG_TITLE")
+        #expect(notifications.sent.first?.title == "工作时间")
         #expect(notifications.sent.first?.body == "开始专注90分钟")
     }
 
