@@ -2,8 +2,6 @@ import SwiftUI
 
 @main
 struct FocusApp: App {
-    static let version = "1.0.2"
-
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
