@@ -129,6 +129,14 @@ struct FocusTests {
         #expect(model.menuBarTitle == "专注计时器")
     }
 
+    @Test func test_menu_title_paused() async throws {
+        // Paused state: not running, but some time has elapsed.
+        let model = TimerModel()
+        model.isRunning = false
+        model.elapsedTime = 42
+        #expect(model.menuBarTitle == "专注计时器 - 运行中")
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
