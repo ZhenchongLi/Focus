@@ -123,6 +123,12 @@ struct FocusTests {
         #expect(model.formatTime(3661) == "01:01:01")
     }
 
+    @Test func test_menu_title_idle() async throws {
+        // A freshly constructed model is idle: not running, elapsedTime == 0.
+        let model = TimerModel()
+        #expect(model.menuBarTitle == "WRONG")
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
