@@ -163,6 +163,30 @@ struct FocusTests {
         #expect(player.isEngineRunning || player.lastStartError != nil)
     }
 
+    @Test func test_app_wires_about_and_help_menu_commands() async throws {
+        // Regression: the About and Help menu commands were deleted from
+        // FocusApp.commands, leaving showAboutWindow()/openHelpWebsite() with
+        // no callers. The .appInfo and .help CommandGroups must call the
+        // matching delegate methods so the menu items reach them.
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let focusAppURL = testFileURL
+            .deletingLastPathComponent() // FocusTests/
+            .deletingLastPathComponent() // worktree root
+            .appendingPathComponent("Focus")
+            .appendingPathComponent("FocusApp.swift")
+
+        let contents = try String(contentsOf: focusAppURL, encoding: .utf8)
+
+        #expect(
+            contents.contains(".appInfo") && contents.contains("showAboutWindow()"),
+            "FocusApp.swift must wire the About menu command to showAboutWindow()"
+        )
+        #expect(
+            contents.contains(".help") && contents.contains("openHelpWebsite()"),
+            "FocusApp.swift must wire the Help menu command to openHelpWebsite()"
+        )
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
