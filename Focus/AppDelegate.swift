@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
     }
 
     @objc func openHelpWebsite() {
-        NSWorkspace.shared.open(URL(string: "https://fists.cc/posts/products/focus/")!)
+        NSWorkspace.shared.open(URL(string: HelpURL.help)!)
     }
 
     @objc func focusMainWindow() {
