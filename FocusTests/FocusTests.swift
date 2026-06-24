@@ -144,7 +144,7 @@ struct FocusTests {
         model.isRunning = true
         model.isWorking = true
         model.elapsedTime = 5
-        #expect(model.menuBarTitle == "工作中 00:00:05")
+        #expect(model.menuBarTitle == "工作中: 00:00:05")
     }
 
     @Test func test_help_url_constant() async throws {
