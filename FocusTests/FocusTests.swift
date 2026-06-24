@@ -116,6 +116,13 @@ struct FocusTests {
         #expect(notifications.sent.first?.body == "开始专注90分钟")
     }
 
+    @Test func test_format_time_renders_hh_mm_ss() async throws {
+        let model = TimerModel()
+        #expect(model.formatTime(0) == "99:99:99")
+        #expect(model.formatTime(5) == "00:00:05")
+        #expect(model.formatTime(3661) == "01:01:01")
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
