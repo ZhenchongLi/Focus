@@ -1,16 +1,15 @@
-# Focus 1.0.1 Release Notes
+# Focus 1.0.2 Release Notes
 
 ## New Features
-- Added website link to about window (fists.cc)
-- Improved about window layout and sizing (400x400)
-- Added proper window lifecycle management
+- About and Help are now reachable again from the application menu.
+- The About window reads its version straight from the app bundle, so it always matches the installed build (no more hardcoded version drift).
 
 ## Bug Fixes
-- Fixed crash when closing about window
-- Corrected window closing behavior (only show exit confirmation for main window)
-- Improved memory management for window references
-- Fixed duplicate window creation issue
+- Audio-engine startup failures are no longer silently swallowed, so sound problems are diagnosable instead of producing mysterious silence.
+- Removed misleading internal comments that contradicted the real work/break durations.
 
 ## Changes
-- Updated version number to 1.0.2
-- Improved code organization and documentation
+- Updated version to 1.0.2.
+- Refactored the timer into a testable `TimerModel` and moved the sine-wave sound synthesis into a dedicated `SoundPlayer`.
+- Added a unit-test suite covering the timer transitions, time formatting, menu-bar title states, and the sound player.
+- Removed the unused UI-test stub target.
