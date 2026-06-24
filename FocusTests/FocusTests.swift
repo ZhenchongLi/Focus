@@ -118,7 +118,7 @@ struct FocusTests {
 
     @Test func test_format_time_renders_hh_mm_ss() async throws {
         let model = TimerModel()
-        #expect(model.formatTime(0) == "99:99:99")
+        #expect(model.formatTime(0) == "00:00:00")
         #expect(model.formatTime(5) == "00:00:05")
         #expect(model.formatTime(3661) == "01:01:01")
     }
