@@ -10,8 +10,9 @@ import Testing
 
 struct FocusTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test func test_version_reads_short_version_string_from_bundle() async throws {
+        let info: [String: Any] = ["CFBundleShortVersionString": "9.9.9"]
+        #expect(AppVersion.shortVersion(infoDictionary: info) == "9.9.9")
     }
 
 }
