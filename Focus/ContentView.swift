@@ -1,7 +1,6 @@
 import SwiftUI
 import AppKit
 import UserNotifications
-import AVFoundation
 
 // 不同类型的提示音
 enum AlertSoundType {
@@ -16,6 +15,9 @@ struct ContentView: View {
 
     // 工作期间的随机提醒定时器
     @State private var randomTimer: Timer? = nil
+
+    // 正弦波合成的专用播放器，声音逻辑不再住在视图里
+    private let soundPlayer = SoundPlayer()
 
     // AppDelegate引用，用于更新菜单栏
     @EnvironmentObject var appDelegate: AppDelegate
@@ -100,92 +102,9 @@ struct ContentView: View {
         appDelegate.updateMenuBarTitle(model.menuBarTitle)
     }
 
-    // 播放不同类型的提示音
+    // 播放不同类型的提示音（合成逻辑住在 SoundPlayer 里）
     func playAlertSound(type: AlertSoundType = .focusReminder) {
-        // 单例音频引擎，防止创建多个实例
-        struct AudioEngineManager {
-            static var shared = AVAudioEngine()
-            static var player = AVAudioPlayerNode()
-            static var isSetup = false
-
-            static func setup() {
-                if !isSetup {
-                    shared.attach(player)
-                    shared.connect(player, to: shared.mainMixerNode, format: AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!)
-                    try? shared.start()
-                    isSetup = true
-                }
-            }
-        }
-
-        // 设置引擎（如果需要）
-        AudioEngineManager.setup()
-
-        // 基于类型的不同声音参数
-        let sampleRate = 44100.0
-        let duration = 1.0  // 所有声音持续1秒
-
-        // 基于类型的不同声音特性
-        var frequency: Double
-        var amplitude: Float
-
-        switch type {
-        case .workToBreak:
-            // 开始休息的放松声音（较低音调）
-            frequency = 440.0  // A4音符
-            amplitude = 0.8
-        case .breakToWork:
-            // 开始工作的有活力声音（较高音调）
-            frequency = 880.0  // A5音符
-            amplitude = 0.8
-        case .focusReminder:
-            // 独特的提醒声音（不同音符）
-            frequency = 659.25  // E5音符
-            amplitude = 0.75
-        }
-
-        let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)!
-        let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(sampleRate * duration))!
-
-        let data = buffer.floatChannelData?[0]
-        let numberOfFrames = Int(sampleRate * duration)
-
-        // 用基于类型的不同特性填充正弦波缓冲区
-        for frame in 0..<numberOfFrames {
-            // 基本正弦波
-            var value = sin(2.0 * .pi * frequency * Double(frame) / sampleRate)
-
-            // 基于类型添加谐波，使声音更有趣
-            switch type {
-            case .workToBreak:
-                // 添加柔和谐波以获得愉悦的声音
-                value += 0.3 * sin(2.0 * .pi * (frequency * 2) * Double(frame) / sampleRate)
-            case .breakToWork:
-                // 添加更强谐波以获得引人注目的声音
-                value += 0.5 * sin(2.0 * .pi * (frequency * 1.5) * Double(frame) / sampleRate)
-                value = value * (sin(2.0 * .pi * 8 * Double(frame) / sampleRate) * 0.2 + 0.8) // 添加脉冲
-            case .focusReminder:
-                // 添加频率扫描以获得与众不同的声音
-                let sweep = 0.1 * sin(2.0 * .pi * 2 * Double(frame) / sampleRate)
-                value = sin(2.0 * .pi * (frequency * (1.0 + sweep)) * Double(frame) / sampleRate)
-            }
-
-            // 归一化以避免裁剪
-            value = max(min(value, 1.0), -1.0)
-
-            // 添加淡入淡出以避免爆音
-            let envelope = min(Float(frame) / 1000.0, Float(numberOfFrames - frame) / 1000.0, 1.0)
-            data?[frame] = Float(value) * amplitude * envelope
-        }
-
-        buffer.frameLength = AVAudioFrameCount(numberOfFrames)
-
-        // 停止任何当前播放
-        AudioEngineManager.player.stop()
-
-        // 播放声音
-        AudioEngineManager.player.scheduleBuffer(buffer, at: nil, options: [], completionHandler: nil)
-        AudioEngineManager.player.play()
+        soundPlayer.play(type)
     }
 
     // 通过现代UNUserNotificationCenter发送通知
