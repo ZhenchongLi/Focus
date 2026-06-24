@@ -15,8 +15,8 @@ struct ContentView: View {
     @State private var isRunning = false
     @State private var isWorking = true
     @State private var elapsedTime: TimeInterval = 0
-    @State private var workTime: TimeInterval = 90*60 // 30秒测试用，实际应为 90*60
-    @State private var breakTime: TimeInterval = 20*60 // 30秒测试用，实际应为 20*60
+    @State private var workTime: TimeInterval = 90*60
+    @State private var breakTime: TimeInterval = 20*60
 
     // 计时器引用
     @State private var timer: Timer? = nil
@@ -235,7 +235,6 @@ struct ContentView: View {
         randomTimer?.invalidate()
 
         if isRunning && isWorking {
-            // 测试用15秒间隔，实际应该是180-300秒之间的随机时间
             let randomInterval = TimeInterval.random(in: 180...300)
 
             randomTimer = Timer.scheduledTimer(withTimeInterval: randomInterval, repeats: false) { _ in
