@@ -11,7 +11,7 @@ struct AboutView: View {
                 .font(.title)
                 .bold()
 
-            Text("Version 1.0.1")
+            Text("Version \(AppVersion.shortVersion())")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
