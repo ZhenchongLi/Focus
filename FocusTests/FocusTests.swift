@@ -151,6 +151,18 @@ struct FocusTests {
         #expect(HelpURL.help == "https://fists.cc/posts/products/focus/")
     }
 
+    @Test func test_sound_player_records_start_outcome() async throws {
+        // Constructing a SoundPlayer attempts to start the engine and records
+        // the outcome instead of swallowing it. Calling play(_:) afterward must
+        // be safe (no crash) even if the engine failed to start.
+        let player = SoundPlayer()
+        player.play(.workToBreak)
+
+        // The start outcome is not silently discarded: either the engine came
+        // up, or the failure was recorded.
+        #expect(player.isEngineRunning || player.lastStartError != nil)
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
