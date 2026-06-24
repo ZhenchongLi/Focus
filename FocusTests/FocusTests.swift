@@ -82,6 +82,40 @@ struct FocusTests {
         #expect(notifications.sent.first?.body == "请休息20分钟")
     }
 
+    @Test func test_break_phase_completes_into_work() async throws {
+        // Recording fakes for the injected side effects.
+        final class SoundRecorder {
+            var played: [AlertSoundType] = []
+        }
+        final class NotificationRecorder {
+            var sent: [(title: String, body: String)] = []
+        }
+
+        let sound = SoundRecorder()
+        let notifications = NotificationRecorder()
+
+        let model = TimerModel(
+            playSound: { sound.played.append($0) },
+            sendNotification: { title, body in notifications.sent.append((title, body)) }
+        )
+        // Shrink the break duration so the test can reach the boundary quickly.
+        model.breakTime = 3
+        model.isWorking = false
+        model.isRunning = true
+
+        // Advance until elapsedTime reaches breakTime (3 ticks).
+        model.tick()
+        model.tick()
+        model.tick()
+
+        #expect(model.isWorking == true)
+        #expect(model.elapsedTime == 0)
+        #expect(sound.played == [.breakToWork])
+        #expect(notifications.sent.count == 1)
+        #expect(notifications.sent.first?.title == "WRONG_TITLE")
+        #expect(notifications.sent.first?.body == "开始专注90分钟")
+    }
+
     @Test func test_content_view_has_no_test_only_comments() async throws {
         // ContentView must not keep the misleading "测试用" comments that
         // contradict the real durations (90*60, 20*60) and reminder interval
