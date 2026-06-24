@@ -48,4 +48,19 @@ struct FocusTests {
         #expect(offenders.isEmpty, "Hardcoded marketing-version literal found in: \(offenders)")
     }
 
+    @Test func test_content_view_has_no_test_only_comments() async throws {
+        // ContentView must not keep the misleading "测试用" comments that
+        // contradict the real durations (90*60, 20*60) and reminder interval
+        // (180...300).
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let contentViewURL = testFileURL
+            .deletingLastPathComponent() // FocusTests/
+            .deletingLastPathComponent() // worktree root
+            .appendingPathComponent("Focus")
+            .appendingPathComponent("ContentView.swift")
+
+        let contents = try String(contentsOf: contentViewURL, encoding: .utf8)
+        #expect(!contents.contains("测试用"), "ContentView.swift still contains a misleading 测试用 comment")
+    }
+
 }
