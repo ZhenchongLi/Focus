@@ -134,7 +134,7 @@ struct FocusTests {
         let model = TimerModel()
         model.isRunning = false
         model.elapsedTime = 42
-        #expect(model.menuBarTitle == "专注计时器 - 运行中")
+        #expect(model.menuBarTitle == "专注计时器 - 已暂停")
     }
 
     @Test func test_content_view_has_no_test_only_comments() async throws {
